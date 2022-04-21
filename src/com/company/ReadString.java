@@ -9,11 +9,12 @@ public class ReadString
     private int num2;
     private char oper;
 
-    public void transfer() {
+    public void transfer() throws InterruptedException {
 
         String[] rimskiye = {"X", "IX", "VIII", "VII", "VI", "V", "IV", "III", "II", "I"};
 
-        System.out.println("Введите выражение");
+        Thread.sleep(1000);
+        System.out.println("Введите выражение, содержащее либо римские, либо арабские цифры от 1 до 10 с оператором +-/* между ними. выражение заканчивается знаком =");
         Scanner scanner = new Scanner(System.in);
         String strokaVvoda = scanner.nextLine();
         char[] MassivDevided = new char[8];
@@ -36,7 +37,9 @@ public class ReadString
         String StringAgain = String.valueOf(MassivDevided);
         StringAgain = StringAgain.substring(0, strokaVvoda.length() - 1);
         String[] blocks;
-        blocks = StringAgain.split("[+-/*]", 2);
+
+            blocks = StringAgain.split("[+-/*]", 2);
+
 
         try{
             boolean flag = false;
@@ -50,6 +53,7 @@ public class ReadString
                     oper = strokaVvoda.charAt(blocks[0].length());
 
                     if ((num1 <num2 )&& (oper == '-')) {
+                        System.out.println("Не существует отрицательных римских чисел");
                         throw new IllegalArgumentException();
                     }
                 }
@@ -60,11 +64,12 @@ public class ReadString
                 }
             }
             if ((num1 > 10 || num1 < 0) || (num2 > 10 || num2 < 0)) {
+                System.out.println("Вы вышли из допустимого диапозона ввода: числа от 0 до 10 ");
                 throw new IllegalArgumentException();
             }
         }
-        catch (RuntimeException e) {
-            throw new IllegalArgumentException("ошибка ввода");
+        catch (Exception e) {
+            throw new IllegalArgumentException("Общее: ошибка ввода данных");
         }
     }
 
@@ -139,22 +144,30 @@ public class ReadString
             } else if (arab==20) {
                 return "XX";
             }
-
+            else if (arab<=0) {
+                return "римских цифр не существует в отрицательном диапозоне";
+            }
+            else if (arab>20) {
+                return "римское число больше 20";
+            }
         }
-        catch (InputMismatchException e) {
-            throw new InputMismatchException("Неверный формат данных");
+        catch (Exception e) {
+            System.out.println("Ошибка с форматом данных при переводе в римские цифры");
+            throw new InputMismatchException();
         }
 
         final String s = roman[arab];
         return s;
-        }
-        public char getOper () {
-            return oper;
-        }
-        public int getNum1 () {
-            return num1;
-        }
-        public int getNum2 () {
-            return num2;
-        }
     }
+
+
+    public char getOper () {
+        return oper;
+    }
+    public int getNum1 () {
+        return num1;
+    }
+    public int getNum2 () {
+        return num2;
+    }
+}

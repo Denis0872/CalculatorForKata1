@@ -7,8 +7,9 @@ public class Main {
     public static void main(String[] args) {
         String rome;
         int arab;
+        boolean Flag;
         ReadString reader = new ReadString();
-        //boolean Flag= flag;
+       //Flag= reader.transfer();
         Calculation calc= new Calculation();
         while (true) {
             try {
@@ -17,15 +18,24 @@ public class Main {
                 System.err.println(e.getMessage());
                 continue;
             }
-
-          //  if (Flag){}
             int result = calc.calculate(reader.getNum1(), reader.getNum2(), reader.getOper());
-            rome=reader.NumToRom(result);
-            System.out.println("В римских"+" " +rome);
             arab=result;
-            System.out.println("В арабских"+" " +arab);
+            rome=reader.NumToRom(result);
+           //if (Flag)
+           //{
+            try{
+                System.out.println("В арабских:"+" " +arab);
+               System.out.println("В римских:"+" " +rome);
+            }
+            catch (Exception e){
+                System.out.println("Ошибка вывода  ");
+            }
+
+             // }
+           // else{
+
+           // System.out.println("Флаг"+" " +Flag);
+          // }
         }
-
     }
-
 }

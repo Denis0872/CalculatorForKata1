@@ -11,9 +11,10 @@ public class Calculation
                 case '-': result = num1 - num2;break;
                 case '*': result = num1 * num2; break;
                 case '/': result = num1 / num2; break;
-                default:
-                    throw new IllegalArgumentException();
+                default: System.out.println("Введён неправильный оператор");
+
             }
+
         }
         catch (ArithmeticException  e) { System.out.println("Делить на ноль нельзя") ; }
         return result;
