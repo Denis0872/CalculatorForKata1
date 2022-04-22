@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import static com.company.Main.flag;
 
 public class ReadString
 {
@@ -12,7 +13,7 @@ public class ReadString
     public void transfer() throws InterruptedException {
 
         String[] rimskiye = {"X", "IX", "VIII", "VII", "VI", "V", "IV", "III", "II", "I"};
-
+        int [] arabskiye={1,2,3,4,5,6,7,8,9,10};
         Thread.sleep(1000);
         System.out.println("Введите выражение, содержащее либо римские, либо арабские цифры от 1 до 10 с оператором +-/* между ними. выражение заканчивается знаком =");
         Scanner scanner = new Scanner(System.in);
@@ -23,6 +24,7 @@ public class ReadString
             MassivDevided[i] = strokaVvoda.charAt(i);
             if (MassivDevided[i] == '+') {
                 oper = '+';
+
             }
             if (MassivDevided[i] == '-') {
                 oper = '-';
@@ -42,7 +44,8 @@ public class ReadString
 
 
         try{
-            boolean flag = false;
+
+            //boolean flag = false;
             for (int i = 0; i < rimskiye.length; i++){
                 if (rimskiye[i].equals(blocks[0]) || rimskiye[i].equals(blocks[1])){
                     flag = true;
