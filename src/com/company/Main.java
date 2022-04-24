@@ -9,7 +9,6 @@ public class Main {
 
         String rome = null;
         int arab = 0;
-        boolean Flag;
         ReadString reader = new ReadString();
         Calculation calc= new Calculation();
         while (true) {
@@ -31,7 +30,7 @@ public class Main {
             {
                System.out.println("В арабских:"+" " +arab);
            }
-           System.out.println("Флаг"+" " +flag);
+           //System.out.println("Флаг"+" " +flag);
           }
         }
     }
